@@ -12,6 +12,7 @@ const SignUp = () => {
         emergencyContacts:''
     })
     const [message, setMessage] = useState('');
+    
 
     const handleInput = (e) => {
         const {name, value} = e.target;
@@ -42,7 +43,7 @@ const SignUp = () => {
                     medicalHistory:'',
                     emergencyContacts:''
                 })
-
+            
               }else{
                 setMessage('Error al registrar el usuario')
     
