@@ -9,7 +9,7 @@ const SignIn = () => {
   });
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
-  const { setUser } = useUser();
+  const { setUser, setToken } = useUser();
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -31,6 +31,7 @@ const SignIn = () => {
       if (response.ok) {
         const data = await response.json();
         setUser(data.user); 
+        setToken(data.token);
         navigate('/dashboard');
       } else {
         setMessage('Error al iniciar sesión');

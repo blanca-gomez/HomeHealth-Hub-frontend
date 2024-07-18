@@ -5,23 +5,25 @@ import Home from './components/Home';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
 import Dashboard from './components/Dashboard';
+import MyMedication from './components/MyMedication';
+import AddMedication from './components/AddMedication';
 import { UserProvider } from './components/UserContext';
 
 function App() {
-  const [user, setUser] = useState(null);
   return (
-    <Router>
-      <UserProvider>
+    <UserProvider>
+      <Router>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signUp" element={<SignUp />} />
-          <Route path="/signIn" element={<SignIn setUser={setUser} />} />
-          <Route path="/dashboard" element={<Dashboard user={user} />} />
-
+          <Route path="/signIn" element={<SignIn/>} />
+          <Route path="/dashboard" element={<Dashboard/>} />
+          <Route path='/medications' element={<MyMedication/>}/>
+          <Route path="/medication/add" element={<AddMedication />} />
         </Routes>
-      </UserProvider>
-      
-    </Router>
+      </Router>
+    </UserProvider>
+
   )
 }
 

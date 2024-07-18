@@ -1,5 +1,6 @@
 import React from 'react';
-import { useUser } from './UserContext';
+import { useUser} from './UserContext';
+import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
   const { user } = useUser();
@@ -12,9 +13,11 @@ const Dashboard = () => {
         <p>Cargando...</p>
       )}
       <nav>
-        <li>Mi medicación</li>
-        <li>Mis constantes vitales</li>
-        <li>Mis citas médicas</li>
+            <Link to='/medications'>Mi medicación</Link>
+            <li>Mis constantes vitales</li>
+            <li>Mis citas médicas</li>
+    
+        
       </nav>
     </div>
     
