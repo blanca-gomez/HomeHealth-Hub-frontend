@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link} from 'react-router-dom';
+import { Link, Outlet} from 'react-router-dom';
 import { useUser } from './UserContext';
-import AddMedication from './AddMedication';
+import { useMedication } from '../contexts/MedicationContexts';
 
 const MyMedication = () => {
-  const [medications, setMedications] = useState([]);
+  const {medications, updateMedicationsList} = useMedication();
   const {token} = useUser();
   
   useEffect(() => {
@@ -18,7 +18,8 @@ const MyMedication = () => {
 
         if (response.ok) {
           const data = await response.json();
-          setMedications(data);
+          updateMedicationsList(data); 
+    
         } else {
           throw new Error('Error al obtener medicamentos');
         }
@@ -29,13 +30,9 @@ const MyMedication = () => {
     };
 
     fetchMedications();
-  }, [token]); 
+  }, [token, updateMedicationsList]); 
 
-  const updateMedicationsList = (newMedication) => {
-    setMedications([...medications, newMedication]);
-  };
-
-
+  
   return (
     <div>
         <nav>
@@ -43,10 +40,11 @@ const MyMedication = () => {
                 <li><Link to='/medication/add'>Añadir medicamento</Link></li>
             </ul>
         </nav>
+        <Outlet/>
         <h2>Mis Medicamentos</h2>
         <ul>
             {medications.map(medication => (
-            <li key={medication._id}>{medication.medicationName}</li>
+                <li key={medication._id}>{medication.medicationName}</li>
             ))}
         </ul>
     </div>

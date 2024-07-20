@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from './UserContext';
+import { useMedication } from '../contexts/MedicationContexts';
 
 const AddMedication = () => {
-    const [medication, setMedication] = useState({
+    const { medications, updateMedicationsList } = useMedication();
+    const [newMedication, setNewMedication] = useState({
         medicationName: '',
         description: '',
         dosage: '',
@@ -14,10 +16,10 @@ const AddMedication = () => {
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
     const { token } = useUser();
-  
+
     const handleInput = (e) => {
-      const { name, value } = e.target;
-      setMedication({ ...medication, [name]: value });
+        const { name, value } = e.target;
+        setNewMedication(prevState => ({ ...prevState, [name]: value }));
     };
 
     const handleSubmit = async (e) => {
@@ -28,48 +30,49 @@ const AddMedication = () => {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',
-                  'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                  'Authorization': `Bearer ${token}`,
               },
-              body: JSON.stringify(medication),
+              body: JSON.stringify(newMedication),
             });
       
             if (response.ok) {
-                const newMedication = await response.json();
-                updateMedicationsList(newMedication);
+                const result = await response.json();
+                console.log(result);
+
+                // Aquí actualizamos la lista de medicamentos
+                updateMedicationsList([...medications, result.medication]);
+
                 setMessage('Medicamento añadido correctamente');
                 navigate('/medications');
-              
-            
             } else {
-              setMessage('Error al añadir medicamento');
+                setMessage('Error al añadir medicamento');
             }
-          } catch (error) {
+        } catch (error) {
             setMessage(error.message || 'Error al añadir medicamento');
-          }
-        };
-      
-        return (
-          <div>
+        }
+    };
+
+    return (
+        <div>
             <h2>Añadir medicamento</h2>
             <form onSubmit={handleSubmit}>
-              <label>Nombre:</label>
-              <input type="text" value={medication.medicationName} name="medicationName" onChange={handleInput} />
-              <label>Descripción:</label>
-              <input type="text" value={medication.description} name="description" onChange={handleInput} />
-              <label>Dosis:</label>
-              <input type="text" value={medication.dosage} name="dosage" onChange={handleInput} />
-              <label>Frecuencia:</label>
-              <input type="text" value={medication.frequency} name="frequency" onChange={handleInput} />
-              <label>Hora:</label>
-              <input type="text" value={medication.timeOfDay} name="timeOfDay" onChange={handleInput} />
-              <label>Fin:</label>
-              <input type="date" value={medication.endDate} name="endDate" onChange={handleInput} />
-              <button type="submit">Añadir</button>
+                <label>Nombre:</label>
+                <input type="text" value={newMedication.medicationName} name="medicationName" onChange={handleInput} />
+                <label>Descripción:</label>
+                <input type="text" value={newMedication.description} name="description" onChange={handleInput} />
+                <label>Dosis:</label>
+                <input type="text" value={newMedication.dosage} name="dosage" onChange={handleInput} />
+                <label>Frecuencia:</label>
+                <input type="text" value={newMedication.frequency} name="frequency" onChange={handleInput} />
+                <label>Hora:</label>
+                <input type="text" value={newMedication.timeOfDay} name="timeOfDay" onChange={handleInput} />
+                <label>Fin:</label>
+                <input type="date" value={newMedication.endDate} name="endDate" onChange={handleInput} />
+                <button type="submit">Añadir</button>
             </form>
             {message && <p>{message}</p>}
-          </div>
-        );
-      };
-      
+        </div>
+    );
+};
+
 export default AddMedication;
-    

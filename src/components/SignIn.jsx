@@ -31,7 +31,9 @@ const SignIn = () => {
       if (response.ok) {
         const data = await response.json();
         setUser(data.user); 
+        console.log(data)
         setToken(data.token);
+        localStorage.setItem('token', data.token)
         navigate('/dashboard');
       } else {
         setMessage('Error al iniciar sesión');
