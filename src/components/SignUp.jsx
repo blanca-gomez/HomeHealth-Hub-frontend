@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import { useNavigate } from 'react-router-dom';
 import { useUser } from './UserContext';
+import { FaUserPlus } from 'react-icons/fa';
+import {Font} from '@react-email/font' 
 
 const SignUp = () => {
     const [form, setForm] = useState({
@@ -58,9 +60,12 @@ const SignUp = () => {
     }
 
         return(
-            <div>
-                <h2>Registro</h2>
-                <form onSubmit={handleSubmit}>
+            <div className="register-container">
+                <h2> 
+                    <FaUserPlus className="singUp-icon" />
+                    <Font fontFamily="Roboto"/><p>Registro</p>
+                </h2>
+                <form onSubmit={handleSubmit} className="register-form">
                     <label>First Name:</label>
                     <input type='text' value={form.firstName} name='firstName' onChange={handleInput}></input>
                     <label>Last Name:</label>
@@ -76,8 +81,8 @@ const SignUp = () => {
                     <label>Medical history:</label>
                     <input type='text' value={form.medicalHistory} name='medicalHistory' onChange={handleInput}></input>
                     <label>Emergency contacts: </label>
-                    <input type='number' value={form.emergencyContacts} name='emergencyContacts' onChange={handleInput}></input>
-                    <button type='submit'>Sign Up</button>
+                    <input type='text' value={form.emergencyContacts} name='emergencyContacts' onChange={handleInput}></input>
+                    <button type='submit' className="submit-buttons">Sign Up</button>
                 </form>
                 {message && <p>{message}</p>}
             </div>
