@@ -7,23 +7,31 @@ import SignIn from './components/SignIn';
 import Dashboard from './components/Dashboard';
 import MyMedication from './components/MyMedication';
 import AddMedication from './components/AddMedication';
+import MyVitals from './components/MyVitals';
+import AddVital from './components/AddVital';
 import { UserProvider } from './components/UserContext';
 import { MedicationProvider } from './contexts/MedicationContexts';
+import { VitalProvider } from './contexts/VitalsContext';
 
 function App() {
   return (
     <UserProvider>
       <MedicationProvider>
-        <Router>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/signUp" element={<SignUp />} />
-            <Route path="/signIn" element={<SignIn/>} />
-            <Route path="/dashboard" element={<Dashboard/>} />
-            <Route path='/medications' element={<MyMedication/>}/>
-            <Route path='/medication/add' element= {<AddMedication/>}/>
-          </Routes>
-        </Router>
+        <VitalProvider>
+          <Router>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/signUp" element={<SignUp />} />
+              <Route path="/signIn" element={<SignIn/>} />
+              <Route path="/dashboard" element={<Dashboard/>} />
+              <Route path='/medications' element={<MyMedication/>}/>
+              <Route path='/medication/add' element= {<AddMedication/>}/>
+              <Route path='/vitals' element={<MyVitals/>}/>
+              <Route path='/vitals/add' element= {<AddVital/>}/>
+            </Routes>
+          </Router>
+        </VitalProvider>
+        
       </MedicationProvider>
     </UserProvider>
 

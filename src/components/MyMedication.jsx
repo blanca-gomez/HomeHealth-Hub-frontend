@@ -25,13 +25,28 @@ const MyMedication = () => {
         }
       } catch (error) {
         console.error(error);
-        
       }
     };
 
     fetchMedications();
   }, [token, updateMedicationsList]); 
 
+  const deleteMedication = async (id) => {
+    try{
+        const response = await fetch(`http://localhost:3000/medications/${id}`, {
+            method: 'DELETE',
+            headers: {
+              'Authorization': `Bearer ${token}`,
+            },
+        });
+        if(!response.ok){
+            throw new Error('Error al eliminar el medicamento');
+        }
+        updateMedicationsList(medications.filter(medication => medication._id!==id))
+    }catch (error) {
+        console.error(error);
+    }
+  }
   
   return (
     <div>
@@ -43,9 +58,23 @@ const MyMedication = () => {
         <Outlet/>
         <h2>Mis Medicamentos</h2>
         <ul>
-            {medications.map(medication => (
-                <li key={medication._id}>{medication.medicationName}</li>
-            ))}
+            {medications.length > 0 ? (
+              medications.map(medication => (
+                <li key={medication._id}>
+                  {`
+                    Nombre: ${medication.medicationName},
+                    Descripción: ${medication.description},
+                    Dosificación: ${medication.dosage},
+                    Frecuencia: ${medication.frequency},
+                    Hora del día: ${medication.timeOfDay},
+                    Fecha de finalización: ${medication.endDate}
+                  `}
+                  <button onClick={() => deleteMedication(medication._id)}>Eliminar</button>
+                </li>
+              ))
+            ) : (
+              <p>No hay medicamentos disponibles.</p>
+            )}
         </ul>
     </div>
   );

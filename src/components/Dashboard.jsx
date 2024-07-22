@@ -13,11 +13,11 @@ const Dashboard = () => {
         <p>Cargando...</p>
       )}
       <nav>
-            <Link to='/medications'>Mi medicación</Link>
-            <li>Mis constantes vitales</li>
-            <li>Mis citas médicas</li>
-    
-        
+        <ul>
+          <li><Link to='/medications'>Mi medicación</Link></li>
+          <li><Link to='/vitals'>Mis constantes vitales</Link></li>
+          <li>Mis citas médicas</li>
+        </ul>
       </nav>
     </div>
     
