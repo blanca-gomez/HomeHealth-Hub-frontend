@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link, Outlet} from 'react-router-dom';
 import { useUser } from './UserContext';
 import { useMedication } from '../contexts/MedicationContexts';
+import {Font} from '@react-email/font';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faTablets} from '@fortawesome/free-solid-svg-icons';
 
 const MyMedication = () => {
   const {medications, updateMedicationsList} = useMedication();
@@ -49,33 +52,39 @@ const MyMedication = () => {
   }
   
   return (
-    <div>
-        <nav>
-            <ul>
-                <li><Link to='/medication/add'>Añadir medicamento</Link></li>
-            </ul>
-        </nav>
-        <Outlet/>
-        <h2>Mis Medicamentos</h2>
+    <div className='hellow-user'>
+      <div className='header-container'>
+        <h2><Font fontFamily="Roboto"/><FontAwesomeIcon icon={faTablets} />Mis Medicamentos<FontAwesomeIcon icon={faTablets} /></h2>
+        <button><Link to='/medication/add'>Añadir medicamento</Link></button>
+      </div>
+      <nav className='nav-options'>
         <ul>
-            {medications.length > 0 ? (
-              medications.map(medication => (
-                <li key={medication._id}>
-                  {`
-                    Nombre: ${medication.medicationName},
-                    Descripción: ${medication.description},
-                    Dosificación: ${medication.dosage},
-                    Frecuencia: ${medication.frequency},
-                    Hora del día: ${medication.timeOfDay},
-                    Fecha de finalización: ${medication.endDate}
-                  `}
-                  <button onClick={() => deleteMedication(medication._id)}>Eliminar</button>
-                </li>
-              ))
-            ) : (
-              <p>No hay medicamentos disponibles.</p>
-            )}
+          <li><Link to='/medications'>Mi medicación</Link></li>
+          <li><Link to='/vitals'>Mis constantes vitales</Link></li>
+          <li>Mis citas médicas</li>
         </ul>
+      </nav>  
+    <div className='medication-container'>
+      <ul>
+        {medications.length > 0 ? (
+          medications.map(medication => (
+            <li key={medication._id} className='medication-cards'>
+              <div className='medication-info'>
+                <h3>{medication.medicationName}</h3>
+                <p><strong>Descripción:</strong> {medication.description}</p>
+                <p><strong>Dosificación:</strong> {medication.dosage}</p>
+                <p><strong>Frecuencia:</strong> {medication.frequency}</p>
+                <p><strong>Hora del día:</strong> {medication.timeOfDay}</p>
+                <p><strong>Fecha de finalización:</strong> {medication.endDate}</p>
+                <button onClick={() => deleteMedication(medication._id)}>Eliminar</button>
+                </div>
+            </li>
+          ))
+      ) : (
+        <p>No hay medicamentos disponibles.</p>
+      )}
+    </ul>
+      </div>
     </div>
   );
 };

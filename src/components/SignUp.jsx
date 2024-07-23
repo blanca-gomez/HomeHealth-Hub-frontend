@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { useNavigate } from 'react-router-dom';
 import { useUser } from './UserContext';
-import { FaUserPlus } from 'react-icons/fa';
+import { FaUserPlus, FaArrowLeft } from 'react-icons/fa';
 import {Font} from '@react-email/font' 
 
 const SignUp = () => {
@@ -62,7 +62,7 @@ const SignUp = () => {
         return(
             <div className="register-container">
                 <h2> 
-                    <FaUserPlus className="singUp-icon" />
+                    <FaUserPlus className="singUpIn-icon" />
                     <Font fontFamily="Roboto"/><p>Registro</p>
                 </h2>
                 <form onSubmit={handleSubmit} className="register-form">
@@ -84,7 +84,7 @@ const SignUp = () => {
                     <input type='text' value={form.emergencyContacts} name='emergencyContacts' onChange={handleInput}></input>
                     <button type='submit' className="submit-buttons">Sign Up</button>
                 </form>
-                {message && <p>{message}</p>}
+                <FaArrowLeft className="arrow-icon" onClick={() => navigate('/')}/>
             </div>
         )
 }

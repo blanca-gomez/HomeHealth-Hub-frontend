@@ -68,15 +68,17 @@
 
 .welcome-buttons button:hover {
   background-color: #039a9a;
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 1);
 }
 /*---------------------------------------------HOME-----------------------------------------*/
-/*---------------------------------------------SIGNUP-----------------------------------------*/
+/*---------------------------------------------SIGNUPIN-----------------------------------------*/
+
 .register-container{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .register-container h2{
@@ -129,9 +131,130 @@
 
 .submit-buttons:hover {
   background-color: #039a9a;
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 1);
 }
+
+.arrow-icon{
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  cursor: pointer;
+  font-size: 40px;
+}
+
+.arrow-icon:hover{
+  background-color: #039a9a;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 1);
+  border-radius: 20px;
+}
+
 /*---------------------------------------------SIGNUP-----------------------------------------*/
+/*---------------------------------------------DASHBOARD-----------------------------------------*/
+.hellow-user{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  height: 100vh;
+}
+.hellow-user h2 {
+  color: #04B6B6;
+  font-size: 4em;
+  margin:0;
+  display: flex;
+  align-items: center;
+  gap:20px;
+}
+
+.nav-options{
+  background-color: #04B6B6;
+  width: 250%;
+  font-size: 2em;
+  font-family: "Roboto", sans-serif;
+}
+
+.nav-options ul{
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  margin:0;
+  padding: 20px;
+}
+
+.nav-options li{
+  list-style: none;
+}
+
+.nav-options a{
+  list-style: none;
+  color: white;
+}
+
+.nav-options a:hover{
+  color:white;
+  font-weight: bold;
+  text-decoration: underline;
+  
+}
+/*---------------------------------------------DASHBOARD-----------------------------------------*/
+/*---------------------------------------------MYMEDICATION-----------------------------------------*/
+.header-container{
+  display: flex;
+  justify-content: space-between; 
+  margin: 0 auto; 
+  padding: 0 20px; 
+}
+.header-container h2{
+  align-items: center;
+  justify-content: cent;
+}
+
+.header-container .submit-buttons {
+  float: right;
+  
+  
+}
+
+.medication-container{
+  background-color: #D8E0E0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:20px;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+
+.medication-container ul{
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin:0;
+  padding: 10px;
+  justify-content: center;
+}
+
+.medication-cards{
+  background-color: #04B6B6;
+  padding: 10px; 
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  width: 300px; 
+  box-sizing: border-box; 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.medication-info{
+  background-color: yellow;
+
+}
+/*---------------------------------------------MYMEDICATION-----------------------------------------*/
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);

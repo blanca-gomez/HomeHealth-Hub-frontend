@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from './UserContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faUser} from '@fortawesome/free-solid-svg-icons';
+import {FaArrowLeft } from 'react-icons/fa';
+import {Font} from '@react-email/font' 
 
 const SignIn = () => {
   const [form, setForm] = useState({
@@ -44,16 +48,19 @@ const SignIn = () => {
   };
 
   return (
-    <div>
-      <h2>Iniciar sesión</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="register-container">
+      <h2>
+        <FontAwesomeIcon icon={faUser} /> 
+        <Font fontFamily="Roboto"/><p>Iniciar sesión</p>
+      </h2>
+      <form onSubmit={handleSubmit} className="register-form">
         <label>Email:</label>
         <input type="text" value={form.email} name="email" onChange={handleInput} />
         <label>Password:</label>
         <input type="password" value={form.password} name="password" onChange={handleInput} />
-        <button type="submit">Sign In</button>
+        <button type="submit" className="submit-buttons">Sign In</button>
       </form>
-      {message && <p>{message}</p>}
+      <FaArrowLeft className="arrow-icon" onClick={() => navigate('/')}/>
     </div>
   );
 };
