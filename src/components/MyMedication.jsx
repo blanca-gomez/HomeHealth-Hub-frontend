@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Outlet} from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import { useUser } from './UserContext';
 import { useMedication } from '../contexts/MedicationContexts';
 import {Font} from '@react-email/font';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faTablets} from '@fortawesome/free-solid-svg-icons';
+import { BiTrash } from 'react-icons/bi';
 
 const MyMedication = () => {
   const {medications, updateMedicationsList} = useMedication();
@@ -52,14 +53,16 @@ const MyMedication = () => {
   }
   
   return (
-    <div className='hellow-user'>
+    <div className='Mymedication-container'>
       <div className='header-container'>
-        <h2><Font fontFamily="Roboto"/><FontAwesomeIcon icon={faTablets} />Mis Medicamentos<FontAwesomeIcon icon={faTablets} /></h2>
-        <button><Link to='/medication/add'>Añadir medicamento</Link></button>
+        <div className='title-button-container'>
+          <h2><Font fontFamily="Roboto"/><FontAwesomeIcon icon={faTablets} />Mis Medicamentos<FontAwesomeIcon icon={faTablets} /></h2>
+        </div>
+        <button className='submit-buttons'><Link to='/medication/add'>Añadir medicamento</Link></button>
       </div>
       <nav className='nav-options'>
         <ul>
-          <li><Link to='/medications'>Mi medicación</Link></li>
+          <li><Link to='/dashboard'>Usuario</Link></li>
           <li><Link to='/vitals'>Mis constantes vitales</Link></li>
           <li>Mis citas médicas</li>
         </ul>
@@ -74,9 +77,9 @@ const MyMedication = () => {
                 <p><strong>Descripción:</strong> {medication.description}</p>
                 <p><strong>Dosificación:</strong> {medication.dosage}</p>
                 <p><strong>Frecuencia:</strong> {medication.frequency}</p>
-                <p><strong>Hora del día:</strong> {medication.timeOfDay}</p>
-                <p><strong>Fecha de finalización:</strong> {medication.endDate}</p>
-                <button onClick={() => deleteMedication(medication._id)}>Eliminar</button>
+                <p><strong>Toma:</strong> {medication.timeOfDay}</p>
+                <p><strong>Día:</strong> {medication.day}</p>
+                <button onClick={() => deleteMedication(medication._id)}><BiTrash className='bitrash-icon'/></button>
                 </div>
             </li>
           ))

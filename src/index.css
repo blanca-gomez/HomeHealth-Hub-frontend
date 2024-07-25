@@ -37,10 +37,45 @@ h1 {
   color: #04B6B6;
 
 }
+/*----------------------------------------------CALENDAR-----------------------------------*/
+.calendar-container{
+  width: 100%;
+  height: 100%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
 
+.calendar-table {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.calendar-table th, .calendar-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.calendar-table th {
+  background-color: #04B6B6;
+  color: white;
+}
+
+.calendar-table td {
+  background-color: #f9f9f9;
+}
+
+.calendar-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
 
 
+/*-----------------------------------------------CALENDAR------------------------------------*/
 button {
   border-radius: 8px;
   border: 1px solid transparent;

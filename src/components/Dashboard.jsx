@@ -3,7 +3,9 @@ import { useUser} from './UserContext';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faFileMedical} from '@fortawesome/free-solid-svg-icons';
-import {Font} from '@react-email/font'
+import {Font} from '@react-email/font';
+import Calendar from './Calendar';
+import Weather from './Weather';
 
 const Dashboard = () => {
   const { user } = useUser();
@@ -22,6 +24,9 @@ const Dashboard = () => {
           <li>Mis citas médicas</li>
         </ul>
       </nav>
+
+      <Calendar/>
+      <Weather/>
     </div>
     
   );

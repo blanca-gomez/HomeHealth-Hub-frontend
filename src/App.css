@@ -83,11 +83,11 @@
 
 .register-container h2{
   color: #04B6B6;
-  font-size: 3em;
+  font-size: 4em;
   display: flex;
   align-items: center;
   gap:8px;
-  margin-bottom: 0;
+  margin: 0;
 }
 
 
@@ -100,7 +100,7 @@
   background-color: #D8E0E0;
   border-radius: 8px;
   width: 400px;
-  margin-top: 0px;
+  margin-top: 15px;
 }
 
 .register-form input{
@@ -127,6 +127,11 @@
   transition: background-color 0.25s, box-shadow 0.25s;
   cursor:pointer;
   font-family: "Roboto", sans-serif;
+}
+
+.submit-buttons a {
+  color:white;
+  font-weight: bold;
 }
 
 .submit-buttons:hover {
@@ -196,25 +201,40 @@
   color:white;
   font-weight: bold;
   text-decoration: underline;
-  
-}
-/*---------------------------------------------DASHBOARD-----------------------------------------*/
-/*---------------------------------------------MYMEDICATION-----------------------------------------*/
-.header-container{
-  display: flex;
-  justify-content: space-between; 
-  margin: 0 auto; 
-  padding: 0 20px; 
-}
-.header-container h2{
-  align-items: center;
-  justify-content: cent;
 }
 
-.header-container .submit-buttons {
-  float: right;
-  
-  
+/*---------------------------------------------DASHBOARD-----------------------------------------*/
+/*---------------------------------------------MYMEDICATION-----------------------------------------*/
+.Mymedication-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap:48px
+}
+
+.header-container{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.title-button-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  margin:0;
+}
+
+.title-button-container h2{
+  margin:0;
+  text-align: center;
+  flex-grow: 1;
+  color: #04B6B6;
+  font-size: 4em;
 }
 
 .medication-container{
@@ -251,10 +271,69 @@
 }
 
 .medication-info{
-  background-color: yellow;
-
+  background-color: whitesmoke;
+  width: 100%;
+  box-sizing: border-box;
 }
+
+.medication-info h3{
+  text-decoration: underline;
+  font-size: 20px;
+}
+
+.bitrash-icon{
+  background-color: red;
+  border-radius: 90%;
+  font-size: 2em;
+  padding: 10px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.1;
+}
+
+.bitrash-icon:hover{
+  background-color: darkred;
+}
+
+.bitrash-icon:active{
+  transform: scale (0.9);
+}
+
 /*---------------------------------------------MYMEDICATION-----------------------------------------*/
+/*---------------------------------------------WEATHER----------------------------------------*/
+.weather-container {
+  width: 40%; 
+  border: 2px solid #ccc; 
+  border-radius: 8px;
+  padding: 10px; 
+  max-height: 300px; 
+  background-color: #E6E6FA;
+}
+
+.weather-location{
+  font-family: "Lobster", sans-serif;
+  font-weight: 500;
+  font-style: normal; 
+  color:#1E90FF;
+  font-size: 20px;
+}
+.weather-content{
+  font-family: "Lobster", sans-serif;
+  color:	#7B68EE;
+}
+.weather-icon{
+  width: 100px; 
+  height: 100px; 
+  margin: 0;
+}
+
+.weather-temperature p {
+  font-size: 2em;
+  font-weight: bold;
+  margin:0
+}
+/*---------------------------------------------WEATHER------------------------------------------*/
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);

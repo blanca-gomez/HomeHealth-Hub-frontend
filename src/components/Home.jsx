@@ -18,7 +18,7 @@ const Home = () => {
           <button><Link to='/signUp'>Registrarse</Link></button>
           <button><Link to='/signIn'>Iniciar sesión</Link></button>
         </nav>
-    </div>
+      </div>
   )
 };
 

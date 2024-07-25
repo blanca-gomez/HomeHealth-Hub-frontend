@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import { useUser } from './UserContext';
 import { useMedication } from '../contexts/MedicationContexts';
+import {Font} from '@react-email/font' 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPills } from '@fortawesome/free-solid-svg-icons';
 
 const AddMedication = () => {
     const { medications, updateMedicationsList } = useMedication();
@@ -11,7 +15,7 @@ const AddMedication = () => {
         dosage: '',
         frequency: '',
         timeOfDay: '',
-        endDate: ''
+        day: ''
     });
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
@@ -39,7 +43,6 @@ const AddMedication = () => {
                 const result = await response.json();
                 console.log(result);
 
-                // Aquí actualizamos la lista de medicamentos
                 updateMedicationsList([...medications, result.medication]);
 
                 setMessage('Medicamento añadido correctamente');
@@ -53,9 +56,19 @@ const AddMedication = () => {
     };
 
     return (
-        <div>
-            <h2>Añadir medicamento</h2>
-            <form onSubmit={handleSubmit}>
+        <div className="register-container">
+            <div>
+                <h2 ><Font fontFamily="Roboto"/>Nuevo medicamento<FontAwesomeIcon icon={faPills} /></h2>
+            </div>
+            <nav className='nav-options'>
+                <ul>
+                    <li><Link to='/dashboard'>Usuario</Link></li>
+                    <li><Link to='/medications'>Mi medicación</Link></li>
+                    <li><Link to='/vitals'>Mis constantes vitales</Link></li>
+                    <li>Mis citas médicas</li>
+                </ul>
+            </nav> 
+            <form onSubmit={handleSubmit} className="register-form">
                 <label>Nombre:</label>
                 <input type="text" value={newMedication.medicationName} name="medicationName" onChange={handleInput} />
                 <label>Descripción:</label>
@@ -64,13 +77,12 @@ const AddMedication = () => {
                 <input type="text" value={newMedication.dosage} name="dosage" onChange={handleInput} />
                 <label>Frecuencia:</label>
                 <input type="text" value={newMedication.frequency} name="frequency" onChange={handleInput} />
-                <label>Hora:</label>
-                <input type="text" value={newMedication.timeOfDay} name="timeOfDay" onChange={handleInput} />
-                <label>Fin:</label>
-                <input type="date" value={newMedication.endDate} name="endDate" onChange={handleInput} />
-                <button type="submit">Añadir</button>
+                <label>Toma:</label>
+                <input type="text" value={newMedication.timeOfDay} name="timeOfDay" onChange={handleInput} placeholder='DE-CO-ME-CE' />
+                <label>Día:</label>
+                <input type="text" value={newMedication.day} name="day" onChange={handleInput} placeholder='L-M-X-J-V-S-D'  />
+                <button type="submit" className="submit-buttons">Añadir</button>
             </form>
-            {message && <p>{message}</p>}
         </div>
     );
 };

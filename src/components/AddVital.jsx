@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import { useUser } from './UserContext';
 import { useVital } from '../contexts/VitalsContext';
+import {Font} from '@react-email/font' 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faHeart} from '@fortawesome/free-solid-svg-icons';
+
 
 const AddVital = () => {
     const { vitals, updateVitalsList } = useVital();
@@ -52,9 +57,17 @@ const AddVital = () => {
     };
 
     return (
-        <div>
-            <h2>Añadir constantes vitales</h2>
-            <form onSubmit={handleSubmit}>
+        <div className="register-container">
+            <h2 ><Font fontFamily="Roboto"/>Nueva constante vital<FontAwesomeIcon icon={faHeart} /></h2>
+            <nav className='nav-options'>
+                <ul>
+                    <li><Link to='/dashboard'>Usuario</Link></li>
+                    <li><Link to='/medications'>Mi medicación</Link></li>
+                    <li><Link to='/vitals'>Mis constantes vitales</Link></li>
+                    <li>Mis citas médicas</li>
+                </ul>
+            </nav> 
+            <form onSubmit={handleSubmit} className="register-form">
                 <label>Tensión arterial:</label>
                 <input type="number" value={newVital.systolic} name="systolic" onChange={handleInput} placeholder='Sistólica'/>
                 <input type="number" value={newVital.diastolic} name="diastolic" onChange={handleInput} placeholder='Diastólica'/>
@@ -68,9 +81,8 @@ const AddVital = () => {
                 <input type="number" value={newVital.glycemia} name="glycemia" onChange={handleInput} />
                 <label>Comentarios:</label>
                 <input type="text" value={newVital.comments} name="comments" onChange={handleInput} />
-                <button type="submit">Añadir</button>
+                <button type="submit" className="submit-buttons">Añadir</button>
             </form>
-            {message && <p>{message}</p>}
         </div>
     );
 };
