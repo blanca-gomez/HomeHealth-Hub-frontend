@@ -6,12 +6,15 @@ import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
 import Dashboard from './components/Dashboard';
 import MyMedication from './components/MyMedication';
-import AddMedication from './components/AddMedication';
+import MedicationForm from './components/MedicationForm';
 import MyVitals from './components/MyVitals';
 import AddVital from './components/AddVital';
+import User from './components/User';
+import UpdateMedication from './components/UpdateMedication';
 import { UserProvider } from './components/UserContext';
 import { MedicationProvider } from './contexts/MedicationContexts';
 import { VitalProvider } from './contexts/VitalsContext';
+
 
 function App() {
   return (
@@ -24,17 +27,17 @@ function App() {
               <Route path="/signUp" element={<SignUp />} />
               <Route path="/signIn" element={<SignIn/>} />
               <Route path="/dashboard" element={<Dashboard/>} />
+              <Route path="/user" element={<User/>} />
               <Route path='/medications' element={<MyMedication/>}/>
-              <Route path='/medication/add' element= {<AddMedication/>}/>
+              <Route path='/medication/add' element= {<MedicationForm/>}/>
+              <Route path="/medication/edit/:id" element={<UpdateMedication />} />
               <Route path='/vitals' element={<MyVitals/>}/>
               <Route path='/vitals/add' element= {<AddVital/>}/>
             </Routes>
           </Router>
         </VitalProvider>
-        
       </MedicationProvider>
     </UserProvider>
-
   )
 }
 

@@ -39,12 +39,13 @@ h1 {
 }
 /*----------------------------------------------CALENDAR-----------------------------------*/
 .calendar-container{
-  width: 100%;
+  width: 60%;
   height: 100%;
   margin: 20px auto;
   padding: 20px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
 
 
@@ -52,7 +53,6 @@ h1 {
   width: 100%;
   height: 100%;
   border-collapse: collapse;
-  margin-top: 10px;
 }
 
 .calendar-table th, .calendar-table td {

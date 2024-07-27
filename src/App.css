@@ -117,26 +117,27 @@
 
 .submit-buttons {
   background-color: #04B6B6;
-  color:white;
   border: none;
   padding: 15px;
   margin-top: 20px;
-  font-size: 16px;
+  font-size: 18px;
   border-radius: 5px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: background-color 0.25s, box-shadow 0.25s;
   cursor:pointer;
+}
+.submit-buttons a{
+  color:white;
   font-family: "Roboto", sans-serif;
 }
 
-.submit-buttons a {
-  color:white;
-  font-weight: bold;
+.submit-buttons:hover {
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 1);
 }
 
-.submit-buttons:hover {
-  background-color: #039a9a;
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 1);
+.submit-buttons a:hover{
+  color:white;
+  font-weight: bold;
 }
 
 .arrow-icon{
@@ -164,14 +165,50 @@
   padding: 20px;
   height: 100vh;
 }
-.hellow-user h2 {
+.dashboard-header{
+  display:flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1500;
+  margin: 20px 20px 10px 100px;
+}
+.dashboard-header h2 {
   color: #04B6B6;
   font-size: 4em;
   margin:0;
-  display: flex;
-  align-items: center;
-  gap:20px;
+  width: 50%;
+  text-align: center;
+  flex-grow: 1;
 }
+
+.miPerfil-button{
+  background-color: #04B6B6;
+  border: none;
+  padding: 15px;
+  width: 200px;
+  margin-top: 20px;
+  font-size: 2em;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.25s, box-shadow 0.25s;
+  cursor:pointer;
+}
+
+.miPerfil-button a{
+  color:white;
+  font-family: "Roboto", sans-serif;
+}
+
+.miPerfil-button:hover {
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 1);
+}
+
+.miPerfil-button a:hover{
+  color:white;
+  font-weight: bold;
+}
+
+
 
 .nav-options{
   background-color: #04B6B6;
@@ -203,6 +240,14 @@
   text-decoration: underline;
 }
 
+.dashboard-content{
+  display:flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 1400px;
+  height: 1200px;
+  margin:20px auto;
+}
 /*---------------------------------------------DASHBOARD-----------------------------------------*/
 /*---------------------------------------------MYMEDICATION-----------------------------------------*/
 .Mymedication-container{
@@ -300,15 +345,32 @@
   transform: scale (0.9);
 }
 
+.faedit-icon{
+  background-color: blue;
+  border-radius: 90%;
+  font-size: 2em;
+  padding: 10px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.1;
+}
+
+.faedit-icon:hover{
+  background-color: darkblue;
+}
+
+.faedit-icon:active{
+  transform: scale (0.9);
+}
 /*---------------------------------------------MYMEDICATION-----------------------------------------*/
 /*---------------------------------------------WEATHER----------------------------------------*/
 .weather-container {
-  width: 40%; 
+  width: 20%; 
   border: 2px solid #ccc; 
-  border-radius: 8px;
-  padding: 10px; 
-  max-height: 300px; 
+  border-radius: 8px; 
   background-color: #E6E6FA;
+  margin-top: 20px;
 }
 
 .weather-location{
@@ -334,6 +396,29 @@
   margin:0
 }
 /*---------------------------------------------WEATHER------------------------------------------*/
+/*---------------------------------------------USER---------------------------------------------*/
+.icon-user-perfil{
+  font-size: 200px;
+  border: 4px solid #04B6B6;
+  border-radius: 35%;
+  padding: 20px;
+  color: #A0CAC8;
+  margin-top: 20px;
+}
+
+.user-perfil-content{
+  background-color: #04B6B6 ;
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 1.5em;
+  background-color: #04B6B6 ;
+  border: 1px outset;
+  border-radius: 8px;
+}
+
+
+
+
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);

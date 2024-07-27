@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useUser } from './UserContext';
-import { useMedication } from '../contexts/MedicationContexts';
 
 const Weather = () => {
     const [location, setLocation] = useState('');

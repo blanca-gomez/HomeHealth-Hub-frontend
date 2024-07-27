@@ -13,7 +13,10 @@ const Dashboard = () => {
   return (
     <div className='hellow-user'>
       {user ? (
-        <h2><Font fontFamily="Roboto"/><FontAwesomeIcon icon={faFileMedical} />¡Bienvenido/a {user.firstName}!</h2>
+        <div className='dashboard-header'>
+          <h2><Font fontFamily="Roboto"/><FontAwesomeIcon icon={faFileMedical} />¡Bienvenido/a {user.firstName}!</h2>
+          <button className='miPerfil-button'><Link to='/user'>Mi perfil</Link></button>
+        </div>
       ) : (
         <p>Cargando...</p>
       )}
@@ -24,11 +27,11 @@ const Dashboard = () => {
           <li>Mis citas médicas</li>
         </ul>
       </nav>
-
-      <Calendar/>
-      <Weather/>
+      <div className='dashboard-content'>
+        <Calendar/>
+        <Weather/>
+      </div>
     </div>
-    
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link} from 'react-router-dom';
 import { useUser } from './UserContext';
 import { useMedication } from '../contexts/MedicationContexts';
@@ -6,6 +6,7 @@ import {Font} from '@react-email/font';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faTablets} from '@fortawesome/free-solid-svg-icons';
 import { BiTrash } from 'react-icons/bi';
+import { FaEdit } from 'react-icons/fa';
 
 const MyMedication = () => {
   const {medications, updateMedicationsList} = useMedication();
@@ -80,7 +81,11 @@ const MyMedication = () => {
                 <p><strong>Toma:</strong> {medication.timeOfDay}</p>
                 <p><strong>Día:</strong> {medication.day}</p>
                 <button onClick={() => deleteMedication(medication._id)}><BiTrash className='bitrash-icon'/></button>
-                </div>
+                <Link to={`/medication/edit/${medication._id}`} className='edit-link'>
+                  <FaEdit className='faedit-icon'/>
+                </Link>
+
+              </div>
             </li>
           ))
       ) : (

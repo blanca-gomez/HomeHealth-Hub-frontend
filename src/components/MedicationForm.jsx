@@ -7,7 +7,7 @@ import {Font} from '@react-email/font'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPills } from '@fortawesome/free-solid-svg-icons';
 
-const AddMedication = () => {
+const MedicationForm = () => {
     const { medications, updateMedicationsList } = useMedication();
     const [newMedication, setNewMedication] = useState({
         medicationName: '',
@@ -87,4 +87,4 @@ const AddMedication = () => {
     );
 };
 
-export default AddMedication;
+export default MedicationForm;

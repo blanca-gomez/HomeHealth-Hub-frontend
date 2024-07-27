@@ -6,6 +6,7 @@ import {Font} from '@react-email/font';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faHeart} from '@fortawesome/free-solid-svg-icons';
 import { BiTrash } from 'react-icons/bi';
+import { FaEdit } from 'react-icons/fa';
 
 const MyVitals = () => {
   const {vitals, updateVitalsList} = useVital();
@@ -81,6 +82,7 @@ const MyVitals = () => {
                 <p><strong>BMT:</strong> {vital.glycemia || '-'} mgdl</p>
                 <p><strong>Comentarios:</strong> {vital.comments || '-'}</p>
                 <button onClick={() => deleteVital(vital._id)}><BiTrash className='bitrash-icon'/></button>
+                <button><FaEdit className='faedit-icon'/></button>
               </div>
             </li>
         ))
