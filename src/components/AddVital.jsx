@@ -47,7 +47,7 @@ const AddVital = () => {
                 const result = await response.json();
                 updateVitalsList([...vitals, result.vital]);
                 setMessage('Constante vital añadida correctamente');
-                navigate('/dashboard');
+                navigate('/vitals');
             } else {
                 setMessage('Error al añadir constante vital');
             }

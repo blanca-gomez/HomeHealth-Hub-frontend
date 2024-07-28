@@ -10,7 +10,14 @@ import { faPills } from '@fortawesome/free-solid-svg-icons';
 const UpdateMedication = () => {
     const {id} = useParams();
     const {token} = useUser();
-    const {medication, setMedications} = useState(null);
+    const [medication, setMedications] = useState({
+        medicationName: '',
+        description: '',
+        dosage: '',
+        frequency: '',
+        timeOfDay: '',
+        day: ''
+    });
     const {medications, updateMedicationsList} = useMedication();
     const navigate = useNavigate();
 
@@ -19,12 +26,12 @@ const UpdateMedication = () => {
             try{
                 const response= await fetch (`http://localhost:3000/medications/${id}`, {
                     headers:{
-                        'authorization' : 'Bearer ${token}'
+                        'Authorization' : `Bearer ${token}` 
                     }
                 });
                 if(response.ok){
                     const data = await response.json();
-                    setMedications(data.medication)
+                    setMedications(data)
                 }else{
                     throw new Error ('Error al obtener el medicamento')
                 }
@@ -35,12 +42,6 @@ const UpdateMedication = () => {
         fetchMedication();
     }, [id, token])
 
-    const handleChange = (e) => {
-        setMedications({
-            ...medications,
-            [e.target.value] : e.target.value
-        });
-    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -48,15 +49,15 @@ const UpdateMedication = () => {
             const response = await fetch (`http://localhost:3000/medications/${id}`, {
                 method: 'PUT',
                 headers: {
-                    'content-type': 'application/json',
+                    'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`,
                 },
                 body: JSON.stringify(medication)
             });
             if(response.ok){
                 const updatedMedication = await response.json();
-                updateMedicationsList(medications.map(medication=>
-                    medication._id === id ? updatedMedication.medication : medication
+                updateMedicationsList(medications.map(medication => 
+                    medication._id === id? updatedMedication : medication
                 ));
                 navigate('/medications')
             }else{
@@ -66,6 +67,14 @@ const UpdateMedication = () => {
             console.log(error)
         }
     }
+
+    const handleChange = (e) => {
+        const {name,value} = e.target
+        setMedications(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
 
     return(
         <div className="register-container">

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect } from 'react';
 import { Link} from 'react-router-dom';
 import { useUser } from './UserContext';
 import { useVital } from '../contexts/VitalsContext';
@@ -72,6 +72,7 @@ const MyVitals = () => {
       <ul>
         {vitals.length > 0 ? (
         vitals.map(vital => (
+          vital && (
             <li key={vital._id} className='medication-cards'>
               <div className='medication-info'>
                 <p><strong>TAS:</strong> {vital.systolic}</p>
@@ -82,9 +83,12 @@ const MyVitals = () => {
                 <p><strong>BMT:</strong> {vital.glycemia || '-'} mgdl</p>
                 <p><strong>Comentarios:</strong> {vital.comments || '-'}</p>
                 <button onClick={() => deleteVital(vital._id)}><BiTrash className='bitrash-icon'/></button>
-                <button><FaEdit className='faedit-icon'/></button>
+                <Link to={`/vitals/edit/${vital._id}`} className='edit-link'>
+                    <FaEdit className='faedit-icon'/>
+                  </Link>
               </div>
             </li>
+          )
         ))
         ) : (
         <p>No hay constantes vitales disponibles.</p>

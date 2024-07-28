@@ -11,6 +11,7 @@ import MyVitals from './components/MyVitals';
 import AddVital from './components/AddVital';
 import User from './components/User';
 import UpdateMedication from './components/UpdateMedication';
+import Updatevital from './components/UpdateVital';
 import { UserProvider } from './components/UserContext';
 import { MedicationProvider } from './contexts/MedicationContexts';
 import { VitalProvider } from './contexts/VitalsContext';
@@ -33,6 +34,7 @@ function App() {
               <Route path="/medication/edit/:id" element={<UpdateMedication />} />
               <Route path='/vitals' element={<MyVitals/>}/>
               <Route path='/vitals/add' element= {<AddVital/>}/>
+              <Route path="/vitals/edit/:id" element={<Updatevital />} />
             </Routes>
           </Router>
         </VitalProvider>

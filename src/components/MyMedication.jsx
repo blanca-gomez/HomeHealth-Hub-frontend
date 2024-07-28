@@ -72,21 +72,22 @@ const MyMedication = () => {
       <ul>
         {medications.length > 0 ? (
           medications.map(medication => (
-            <li key={medication._id} className='medication-cards'>
-              <div className='medication-info'>
-                <h3>{medication.medicationName}</h3>
-                <p><strong>Descripción:</strong> {medication.description}</p>
-                <p><strong>Dosificación:</strong> {medication.dosage}</p>
-                <p><strong>Frecuencia:</strong> {medication.frequency}</p>
-                <p><strong>Toma:</strong> {medication.timeOfDay}</p>
-                <p><strong>Día:</strong> {medication.day}</p>
-                <button onClick={() => deleteMedication(medication._id)}><BiTrash className='bitrash-icon'/></button>
-                <Link to={`/medication/edit/${medication._id}`} className='edit-link'>
-                  <FaEdit className='faedit-icon'/>
-                </Link>
-
-              </div>
-            </li>
+            medication && (
+              <li key={medication._id} className='medication-cards'>
+                <div className='medication-info'>
+                  <h3>{medication.medicationName}</h3>
+                  <p><strong>Descripción:</strong> {medication.description}</p>
+                  <p><strong>Dosificación:</strong> {medication.dosage}</p>
+                  <p><strong>Frecuencia:</strong> {medication.frequency}</p>
+                  <p><strong>Toma:</strong> {medication.timeOfDay}</p>
+                  <p><strong>Día:</strong> {medication.day}</p>
+                  <button onClick={() => deleteMedication(medication._id)}><BiTrash className='bitrash-icon'/></button>
+                  <Link to={`/medication/edit/${medication._id}`} className='edit-link'>
+                    <FaEdit className='faedit-icon'/>
+                  </Link>
+                </div>
+              </li>
+            )
           ))
       ) : (
         <p>No hay medicamentos disponibles.</p>
