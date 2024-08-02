@@ -24,7 +24,7 @@ const Dashboard = () => {
         <ul>
           <li><Link to='/medications'>Mi medicación</Link></li>
           <li><Link to='/vitals'>Mis constantes vitales</Link></li>
-          <li>Mis citas médicas</li>
+          <li><Link to='/appoinments'>Mis citas médicas</Link></li>
         </ul>
       </nav>
       <div className='dashboard-content'>

@@ -65,7 +65,7 @@ const MyVitals = () => {
         <ul>
           <li><Link to='/dashboard'>Usuario</Link></li>
           <li><Link to='/medications'>Mi medicación</Link></li>
-          <li>Mis citas médicas</li>
+          <li><Link to='/appoinments'>Mis citas médicas</Link></li>
         </ul>
       </nav> 
       <div className='medication-container'>
@@ -94,10 +94,7 @@ const MyVitals = () => {
         <p>No hay constantes vitales disponibles.</p>
         )}
       </ul>
-    </div>
-        
-        
-        
+    </div>    
   </div>
   );
 };

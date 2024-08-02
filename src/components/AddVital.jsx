@@ -64,7 +64,7 @@ const AddVital = () => {
                     <li><Link to='/dashboard'>Usuario</Link></li>
                     <li><Link to='/medications'>Mi medicación</Link></li>
                     <li><Link to='/vitals'>Mis constantes vitales</Link></li>
-                    <li>Mis citas médicas</li>
+                    <li><Link to='/appoinments'>Mis citas médicas</Link></li>
                 </ul>
             </nav> 
             <form onSubmit={handleSubmit} className="register-form">

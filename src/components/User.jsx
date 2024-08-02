@@ -2,6 +2,7 @@ import React from 'react';
 import { useUser} from './UserContext';
 import {Font} from '@react-email/font';
 import { Link } from 'react-router-dom';
+
 import { FaUser } from 'react-icons/fa';
 
 const User = () => {
@@ -9,7 +10,7 @@ const User = () => {
 
     return(
         <div className='hellow-user'>
-            <div>
+            <div className='dashboard-header'>
                 {user ? (
                     <h2><Font fontFamily="Roboto"/>{user.firstName}</h2>
                 ) : (
@@ -20,7 +21,7 @@ const User = () => {
                 <ul>
                 <li><Link to='/medications'>Mi medicación</Link></li>
                 <li><Link to='/vitals'>Mis constantes vitales</Link></li>
-                <li>Mis citas médicas</li>
+                <li><Link to='/appoinments'>Mis citas médicas</Link></li>
                 </ul>
             </nav>
             <div className='icon-user-perfil'>

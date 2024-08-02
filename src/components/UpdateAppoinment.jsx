@@ -2,36 +2,33 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Link} from 'react-router-dom';
 import { useUser } from './UserContext';
-import { useMedication } from '../contexts/MedicationContexts';
+import { useAppoinments } from '../contexts/AppoinmentContext';
 import {Font} from '@react-email/font';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPills } from '@fortawesome/free-solid-svg-icons';
 
-const UpdateMedication = () => {
+const UpdateAppointment = () => {
     const {id} = useParams();
     const {token} = useUser();
-    const [medication, setMedications] = useState({
-        medicationName: '',
-        description: '',
-        dosage: '',
-        frequency: '',
-        timeOfDay: '',
-        day: ''
+    const [appoinment, setAppoinments] = useState({
+        appointmentDate: '',
+        appointmentTime: '',
+        notes: '',
     });
-    const {medications, updateMedicationsList} = useMedication();
+    const {appoinments, updateAppoinmentsList} = useAppoinments();
     const navigate = useNavigate();
 
     useEffect (() => {
-        const fetchMedication = async () => {
+        const fetchAppoinment = async () => {
             try{
-                const response= await fetch (`http://localhost:3000/medications/${id}`, {
+                const response= await fetch (`http://localhost:3000/appoinments/${id}`, {
                     headers:{
                         'Authorization' : `Bearer ${token}` 
                     }
                 });
                 if(response.ok){
                     const data = await response.json();
-                    setMedications(data)
+                    setAppoinments(data)
                 }else{
                     throw new Error ('Error al obtener el medicamento')
                 }
@@ -39,29 +36,29 @@ const UpdateMedication = () => {
                 console.error(error)
             }
         };
-        fetchMedication();
+        fetchAppoinment();
     }, [id, token])
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try{
-            const response = await fetch (`http://localhost:3000/medications/${id}`, {
+            const response = await fetch (`http://localhost:3000/appoinments/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`,
                 },
-                body: JSON.stringify(medication)
+                body: JSON.stringify(appoinment)
             });
             if(response.ok){
-                const updatedMedication = await response.json();
-                updateMedicationsList(medications.map(medication => 
-                    medication._id === id? updatedMedication : medication
+                const updatedAppoinment = await response.json();
+                updateAppoinmentsList(appoinments.map(appoinment => 
+                    appoinment._id === id? updatedAppoinment : appoinment
                 ));
-                navigate('/medications')
+                navigate('/appoinments')
             }else{
-                throw new Error ('Error al obtener el medicamento')
+                throw new Error ('Error al obtener la cita')
             }
         }catch (error){
             console.log(error)
@@ -70,11 +67,16 @@ const UpdateMedication = () => {
 
     const handleChange = (e) => {
         const {name,value} = e.target
-        setMedications(prevState => ({
+        setAppoinments(prevState => ({
             ...prevState,
             [name]: value
         }));
     };
+
+    const formatDate = (date) => {
+        const dateObj = new Date(date);
+        return dateObj.toISOString().split('T')[0]
+    }
 
     return(
         <div className="register-container">
@@ -90,22 +92,16 @@ const UpdateMedication = () => {
                 </ul>
             </nav> 
             <form onSubmit={handleSubmit} className="register-form">
-                <label>Nombre:</label>
-                <input type="text" value={medication.medicationName} name="medicationName" onChange={handleChange} />
-                <label>Descripción:</label>
-                <input type="text" value={medication.description} name="description" onChange={handleChange} />
-                <label>Dosis:</label>
-                <input type="text" value={medication.dosage} name="dosage" onChange={handleChange} />
-                <label>Frecuencia:</label>
-                <input type="text" value={medication.frequency} name="frequency" onChange={handleChange} />
-                <label>Toma:</label>
-                <input type="text" value={medication.timeOfDay} name="timeOfDay" onChange={handleChange} />
-                <label>Día:</label>
-                <input type="text" value={medication.day} name="day" onChange={handleChange}   />
+            <label>Día:</label>
+                <input type="Date" value={ appoinment.appointmentDate ? formatDate(appoinment.appointmentDate): ''} name="appointmentDate" onChange={handleChange} placeholder='Día'/>
+                <label>Hora:</label>
+                <input type="Hour" value={appoinment.appointmentTime} name="appointmentTime" onChange={handleChange} placeholder='Hora' />
+                <label>Nota:</label>
+                <input type="text" value={appoinment.notes} name="notes" onChange={handleChange} placeholder='Notas' />
                 <button type="submit" className="submit-buttons">Editar</button>
             </form>
         </div>
     );
 };
 
-export default UpdateMedication;
+export default UpdateAppointment;

@@ -65,14 +65,14 @@ const MyMedication = () => {
         <ul>
           <li><Link to='/dashboard'>Usuario</Link></li>
           <li><Link to='/vitals'>Mis constantes vitales</Link></li>
-          <li>Mis citas médicas</li>
+          <li><Link to='/appoinments'>Mis citas médicas</Link></li>
         </ul>
       </nav>  
     <div className='medication-container'>
       <ul>
         {medications.length > 0 ? (
           medications.map(medication => (
-            medication && (
+            medication && medication._id && (
               <li key={medication._id} className='medication-cards'>
                 <div className='medication-info'>
                   <h3>{medication.medicationName}</h3>

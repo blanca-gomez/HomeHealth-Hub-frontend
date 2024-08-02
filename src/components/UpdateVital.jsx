@@ -20,7 +20,7 @@ const Updatevital = () => {
         glycemia: '',
         comments: '',
     });
-    const {vitals, updateVitalsList} = useVital();
+    const {updateVitalsList} = useVital();
     const navigate = useNavigate();
 
     useEffect (() => {
@@ -33,7 +33,15 @@ const Updatevital = () => {
                 });
                 if(response.ok){
                     const data = await response.json();
-                    setVitals(data)
+                    setVitals({
+                        systolic: data.systolic || '',
+                        diastolic: data.diastolic || '',
+                        heartReate: data.heartReate || '',
+                        oxygenSaturation: data.oxygenSaturation || '',
+                        temperature: data.temperature || '',
+                        glycemia: data.glycemia || '',
+                        comments: data.comments || ''
+                    });
                 }else{
                     throw new Error ('Error al obtener la constante vital')
                 }
@@ -58,9 +66,7 @@ const Updatevital = () => {
             });
             if(response.ok){
                 const updatedVital = await response.json();
-                updateVitalsList(vitals.map(vital => 
-                    vital._id === id? updatedVital : vital
-                ));
+                setVitals(updatedVital);
                 navigate('/vitals')
             }else{
                 throw new Error ('Error al obtener la constante vital')
@@ -86,7 +92,7 @@ const Updatevital = () => {
                     <li><Link to='/dashboard'>Usuario</Link></li>
                     <li><Link to='/medications'>Mi medicación</Link></li>
                     <li><Link to='/vitals'>Mis constantes vitales</Link></li>
-                    <li>Mis citas médicas</li>
+                    <li><Link to='/appoinments'>Mis citas médicas</Link></li>
                 </ul>
             </nav> 
             <form onSubmit={handleSubmit} className="register-form">
