@@ -27,15 +27,17 @@ const SignUp = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
     
         try{
-            const response = await fetch('http://localhost:3000/auth/signup', {
+            const response = await fetch(`${import.meta.env.BASE_URL}/auth/signup`, {
                 method: 'POST', 
                 headers: {
                   'Content-Type': 'application/json', 
                 },
                 body: JSON.stringify(form), 
               })
+              const result = await response.json(); 
     
               if(response.ok){
                 setMessage('¡Usuario registrado con éxito!');
@@ -51,7 +53,7 @@ const SignUp = () => {
                 })
             
               }else{
-                setMessage('Error al registrar el usuario')
+                setMessage(result.message || 'Error al registrar el usuario')
     
               }
         }catch (error){

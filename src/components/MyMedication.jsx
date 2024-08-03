@@ -15,7 +15,7 @@ const MyMedication = () => {
   useEffect(() => {
     const fetchMedications = async () => {
       try {
-        const response = await fetch('http://localhost:3000/medications', {
+        const response = await fetch(`${import.meta.env.BASE_URL}/medications`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -38,7 +38,7 @@ const MyMedication = () => {
 
   const deleteMedication = async (id) => {
     try{
-        const response = await fetch(`http://localhost:3000/medications/${id}`, {
+        const response = await fetch(`${import.meta.env.BASE_URL}/medications/${id}`, {
             method: 'DELETE',
             headers: {
               'Authorization': `Bearer ${token}`,

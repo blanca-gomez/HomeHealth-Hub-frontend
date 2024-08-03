@@ -24,7 +24,7 @@ const SignIn = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3000/auth/signin', {
+      const response = await fetch(`${import.meta.env.BASE_URL}/auth/signin`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -35,7 +35,6 @@ const SignIn = () => {
       if (response.ok) {
         const data = await response.json();
         setUser(data.user); 
-        console.log(data)
         setToken(data.token);
         localStorage.setItem('token', data.token)
         navigate('/dashboard');
