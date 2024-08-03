@@ -24,7 +24,7 @@ const UpdateMedication = () => {
     useEffect (() => {
         const fetchMedication = async () => {
             try{
-                const response= await fetch (`${import.meta.env.BASE_URL}/medications/${id}`, {
+                const response= await fetch (`http://localhost:3000/medications/${id}`, {
                     headers:{
                         'Authorization' : `Bearer ${token}` 
                     }
@@ -46,7 +46,7 @@ const UpdateMedication = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try{
-            const response = await fetch (`${import.meta.env.BASE_URL}/medications/${id}`, {
+            const response = await fetch (`http://localhost:3000/medications/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

@@ -15,7 +15,7 @@ const MyAppoinments = () => {
   useEffect(() => {
     const fetchAppoinments = async () => {
       try {
-        const response = await fetch(`${import.meta.env.BASE_URL}/appoinments`, {
+        const response = await fetch('http://localhost:3000/appoinments', {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -39,7 +39,7 @@ const MyAppoinments = () => {
 
   const deleteAppoinment = async (id) => {
     try{
-        const response = await fetch(`${import.meta.env.BASE_URL}/appoinments/${id}`, {
+        const response = await fetch(`http://localhost:3000/appoinments/${id}`, {
             method: 'DELETE',
             headers: {
               'Authorization': `Bearer ${token}`,

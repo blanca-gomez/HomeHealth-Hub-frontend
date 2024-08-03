@@ -34,7 +34,7 @@ const AddVital = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch(`${import.meta.env.BASE_URL}/appoinments/vitals`, {
+            const response = await fetch('http://localhost:3000/vitals', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',

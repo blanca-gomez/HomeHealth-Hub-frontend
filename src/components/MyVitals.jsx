@@ -15,7 +15,7 @@ const MyVitals = () => {
   useEffect(() => {
     const fetchVitals = async () => {
       try {
-        const response = await fetch(`${import.meta.env.BASE_URL}/vitals`, {
+        const response = await fetch('http://localhost:3000/vitals', {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -39,7 +39,7 @@ const MyVitals = () => {
 
   const deleteVital = async (id) => {
     try{
-        const response = await fetch(`${import.meta.env.BASE_URL}/vitals/${id}`, {
+        const response = await fetch(`http://localhost:3000/vitals/${id}`, {
             method: 'DELETE',
             headers: {
               'Authorization': `Bearer ${token}`,

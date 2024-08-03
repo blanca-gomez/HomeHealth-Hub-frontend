@@ -9,7 +9,7 @@ const Calendar = () => {
     useEffect(() => {
         const fetchMedications = async () => {
         try {
-            const response = await fetch(`${import.meta.env.BASE_URL}/appoinments/vitals/medications`, {
+            const response = await fetch('http://localhost:3000/medications', {
             headers: {
                 'Authorization': `Bearer ${token}`,
             },

@@ -30,7 +30,7 @@ const MedicationForm = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch(`${import.meta.env.BASE_URL}/appoinments/vitals/medications/medications`, {
+            const response = await fetch('http://localhost:3000/medications', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',

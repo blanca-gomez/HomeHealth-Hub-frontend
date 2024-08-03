@@ -31,7 +31,7 @@ const AddAppoinment = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch(`${import.meta.env.BASE_URL}/appoinments`, {
+            const response = await fetch('http://localhost:3000/appoinments', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',

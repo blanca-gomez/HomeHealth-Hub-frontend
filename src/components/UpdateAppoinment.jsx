@@ -21,7 +21,7 @@ const UpdateAppointment = () => {
     useEffect (() => {
         const fetchAppoinment = async () => {
             try{
-                const response= await fetch (`${import.meta.env.BASE_URL}/appoinments/${id}`, {
+                const response= await fetch (`http://localhost:3000/appoinments/${id}`, {
                     headers:{
                         'Authorization' : `Bearer ${token}` 
                     }
@@ -43,7 +43,7 @@ const UpdateAppointment = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try{
-            const response = await fetch (`${import.meta.env.BASE_URL}/appoinments/${id}`, {
+            const response = await fetch (`http://localhost:3000/appoinments/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

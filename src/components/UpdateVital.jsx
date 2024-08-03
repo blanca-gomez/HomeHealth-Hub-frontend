@@ -26,7 +26,7 @@ const Updatevital = () => {
     useEffect (() => {
         const fetchVital = async () => {
             try{
-                const response= await fetch (`${import.meta.env.BASE_URL}/vitals/${id}`, {
+                const response= await fetch (`http://localhost:3000/vitals/${id}`, {
                     headers:{
                         'Authorization' : `Bearer ${token}` 
                     }
@@ -56,7 +56,7 @@ const Updatevital = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try{
-            const response = await fetch (`${import.meta.env.BASE_URL}/vitals/${id}`, {
+            const response = await fetch (`http://localhost:3000/vitals/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
